@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="javascript:submitform()">
+    <h4>Mode</h4>
+    <input id="manual" type="radio" name="mode" oninput="changeMode()" checked>
+    <label for="manual">Manual</label><br>
+    <input id="auto" type="radio" name="mode" oninput="changeMode()">
+    <label for="auto">Auto</label><br>
+    <h4 id="targetHeader">Target speed</h4>
+    <input id="targetValue" type="range" min="0" max="120" oninput="document.getElementById('sliderOutput').value = this.value">
+    <output id="sliderOutput">60</output>
+    <input type="submit">
+</form>
+
+<div>
+    <h4>Speed</h4>
+    <p id="Speed">0</p>
+</div>
+<div>
+    <h4>Pressure</h4>
+    <p id="Pressure">0</p>
+</div>
+<div>
+    <h4>CO2</h4>
+    <p id="CO2">0</p>
+</div>
+<div>
+    <h4>RH</h4>
+    <p id="RH">0</p>
+</div>
+<div>
+    <h4>Temp</h4>
+    <p id="Temp">0</p>
+</div>
+
+</body>
+</html>
+
+<script>
+    function submitform() {
+        let auto = document.getElementById("auto");
+        let mode = auto.checked ? "pressure" : "speed";
+        let json = {
+            "auto": auto.checked,
+            [mode]: document.getElementById("targetValue").value
+        }
+
+        fetch('/send', {
+            method: 'POST',
+            body: JSON.stringify(json),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+    }
+
+    function changeMode() {
+        let header = document.getElementById("targetHeader");
+        let slider = document.getElementById("targetValue");
+        let output = document.getElementById("sliderOutput");
+
+        if (document.getElementById("auto").checked) {
+            header.innerText = "Target pressure";
+            slider.setAttribute("max", "120");
+            slider.value = 60;
+            output.value = 60;
+        } else {
+            header.innerText = "Target speed";
+            slider.setAttribute("max", "100");
+            slider.value = 50;
+            output.value = 50;
+        }
+    }
+
+    setInterval(function () {
+        fetch('/update', {
+            method: 'get'
+        }).then(async function (res) {
+            let dataJson = JSON.parse(await res.text());
+            document.getElementById("Speed").innerText = dataJson["speed"] + " rpm";
+            document.getElementById("Pressure").innerText = dataJson["pressure"] + " Pa";
+            document.getElementById("CO2").innerText = dataJson["co2"] + " ppm";
+            document.getElementById("RH").innerText = dataJson["rh"] + " %RH";
+            document.getElementById("Temp").innerText = dataJson["temp"] + " °C";
+        });
+    }, 500);
+</script>
