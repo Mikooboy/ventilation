@@ -48,7 +48,7 @@
         let mode = auto.checked ? "pressure" : "speed";
         let json = {
             "auto": auto.checked,
-            [mode]: document.getElementById("targetValue").value
+            [mode]: parseInt(document.getElementById("targetValue").value)
         }
 
         fetch('/send', {
