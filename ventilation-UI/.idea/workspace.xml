@@ -17,7 +17,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/ventilation-UI" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -36,7 +36,7 @@
     "WebServerToolWindowFactoryState": "false",
     "javascript.nodejs.core.library.configured.version": "16.17.0",
     "javascript.nodejs.core.library.typings.version": "16.11.64",
-    "last_opened_file_path": "C:/Users/mikol/Documents/ventilation-UI",
+    "last_opened_file_path": "C:/Users/mikol/Documents/ventilation/ventilation-UI",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -51,6 +51,7 @@
       <updated>1664968790139</updated>
       <workItem from="1664968791581" duration="10331000" />
       <workItem from="1664980007303" duration="113000" />
+      <workItem from="1665050779786" duration="414000" />
     </task>
     <servers />
   </component>
