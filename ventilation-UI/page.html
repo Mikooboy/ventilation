@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<a href="/logout">Logout</a>
+
 <form action="javascript:submitform()">
     <h4>Mode</h4>
     <input id="manual" type="radio" name="mode" oninput="changeMode()" checked>
@@ -13,8 +15,8 @@
     <input id="auto" type="radio" name="mode" oninput="changeMode()">
     <label for="auto">Auto</label><br>
     <h4 id="targetHeader">Target speed</h4>
-    <input id="targetValue" type="range" min="0" max="120" oninput="document.getElementById('sliderOutput').value = this.value">
-    <output id="sliderOutput">60</output>
+    <input id="targetValue" type="range" min="0" max="100" oninput="document.getElementById('sliderOutput').value = this.value"><br>
+    <input id="sliderOutput" type="number" value="50" oninput="document.getElementById('targetValue').value = this.value">
     <input type="submit">
 </form>
 
@@ -83,7 +85,7 @@
             method: 'get'
         }).then(async function (res) {
             let dataJson = JSON.parse(await res.text());
-            document.getElementById("Speed").innerText = dataJson["speed"] + " rpm";
+            document.getElementById("Speed").innerText = dataJson["speed"];
             document.getElementById("Pressure").innerText = dataJson["pressure"] + " Pa";
             document.getElementById("CO2").innerText = dataJson["co2"] + " ppm";
             document.getElementById("RH").innerText = dataJson["rh"] + " %RH";
@@ -91,3 +93,9 @@
         });
     }, 500);
 </script>
+
+<style>
+    input[type=range], input[type=number] {
+        width: 10em;
+    }
+</style>
