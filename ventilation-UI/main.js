@@ -19,18 +19,25 @@ const db = new sqlite3.Database('./ventilation.db', sqlite3.OPEN_READWRITE, (err
 });
 
 //db.run(`CREATE TABLE ventilation(id INTEGER PRIMARY KEY, timestamp DATETIME NOT null DEFAULT(CURRENT_TIMESTAMP), nr, speed, setpoint, pressure, auto, error, co2, rh, temp)`);
-//db.run(`CREATE TABLE login(id UNSIGNED INTEGER AUTO_INCREMENT PRIMARY KEY, timestamp DATETIME NOT null DEFAULT CURRENT_TIMESTAMP, username)`);
+//db.run(`CREATE TABLE login(id INTEGER PRIMARY KEY, timestamp DATETIME NOT null DEFAULT(CURRENT_TIMESTAMP), username)`);
 
 const users = {
-    'test': 'd31aceb3c06e3e7acc5acbf53f7a26a578873b547a1932b2c30358c0d1a710e9'
+    'test': 'd31aceb3c06e3e7acc5acbf53f7a26a578873b547a1932b2c30358c0d1a710e9',
+    'test2': 'd31aceb3c06e3e7acc5acbf53f7a26a578873b547a1932b2c30358c0d1a710e9',
+    'test3': 'd31aceb3c06e3e7acc5acbf53f7a26a578873b547a1932b2c30358c0d1a710e9'
 }
-let loggedIn = []
+let loggedIn = {}
 
 function encrypt(pass) {
     return crypto.pbkdf2Sync(pass, 'salt', 100000, 32, 'sha512').toString('hex');
 }
 
 function validate(username, password) {
+    if (users[username] === encrypt(password) && !loggedIn[username]) {
+        db.run(`INSERT INTO login (username) VALUES (?)`, [username]);
+        console.log("logged in " + username);
+        loggedIn[username] = true;
+    }
     return (users[username] === encrypt(password));
 }
 
@@ -47,7 +54,7 @@ client.on('connect', function () {
 });
 
 client.on('message', function (topic, message) {
-    console.log(message.toString());
+    //console.log(message.toString());
     let parsed = JSON.parse(message.toString());
 
     if (topic === "controller/status") {
@@ -65,7 +72,6 @@ client.on('message', function (topic, message) {
                 parsed["temp"]
             ]
         );
-
         statusMessages.push(message.toString());
     }
 });
@@ -84,6 +90,8 @@ app.post('/send', (req, res) => {
 });
 
 app.get('/logout', function (req, res) {
+    console.log("logged out " + req.auth["user"]);
+    delete loggedIn[req.auth["user"]];
     res.status(401).send("<h4>Logged out!</h4><a href='/'>Home</a>");
 });
 
