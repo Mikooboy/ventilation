@@ -53,6 +53,30 @@
 </html>
 
 <script>
+    let savedSetpoint, savedMode;
+    function update() {
+        fetch('/data/update', {
+            method: 'get'
+        }).then(async function (res) {
+            let dataJson = JSON.parse(await res.text());
+            if (savedSetpoint !== dataJson["setpoint"] || savedMode !== dataJson["auto"]) {
+                if (dataJson["auto"]) {
+                    document.getElementById("auto").checked = true;
+                } else {
+                    document.getElementById("manual").checked = true;
+                }
+                savedSetpoint = dataJson["setpoint"];
+                savedMode = dataJson["auto"];
+                changeMode(parseInt(dataJson["setpoint"]));
+            }
+            document.getElementById("Speed").innerText = dataJson["speed"] + "%";
+            document.getElementById("Pressure").innerText = dataJson["pressure"] + " Pa";
+            document.getElementById("CO2").innerText = dataJson["co2"] + " ppm";
+            document.getElementById("RH").innerText = dataJson["rh"] + " %RH";
+            document.getElementById("Temp").innerText = dataJson["temp"] + " °C";
+        });
+    }
+
     function submitform() {
         let auto = document.getElementById("auto");
         let mode = auto.checked ? "pressure" : "speed";
@@ -70,7 +94,7 @@
         });
     }
 
-    function changeMode() {
+    function changeMode(target) {
         let header = document.getElementById("targetHeader");
         let slider = document.getElementById("targetValue");
         let output = document.getElementById("sliderOutput");
@@ -78,27 +102,44 @@
         if (document.getElementById("auto").checked) {
             header.innerText = "Target pressure";
             slider.setAttribute("max", "120");
-            slider.value = 60;
-            output.value = 60;
+            slider.value = target !== undefined ? target : 60;
+            output.value = target !== undefined ? target : 60;
         } else {
             header.innerText = "Target speed";
             slider.setAttribute("max", "100");
-            slider.value = 50;
-            output.value = 50;
+            slider.value = target !== undefined ? target : 50;
+            output.value = target !== undefined ? target : 50;
         }
+        update();
     }
 
-    setInterval(function () {
-        fetch('/update', {
+    function getVentilationData() {
+        fetch('/data/ventilation', {
             method: 'get'
         }).then(async function (res) {
             let dataJson = JSON.parse(await res.text());
-            document.getElementById("Speed").innerText = dataJson["speed"];
-            document.getElementById("Pressure").innerText = dataJson["pressure"] + " Pa";
-            document.getElementById("CO2").innerText = dataJson["co2"] + " ppm";
-            document.getElementById("RH").innerText = dataJson["rh"] + " %RH";
-            document.getElementById("Temp").innerText = dataJson["temp"] + " °C";
+            let timeData = [];
+            let setpointData = [];
+            for (let i = 0; i < dataJson.length; i++) {
+                timeData.push(dataJson[i]["id"]);
+                setpointData.push(parseInt(dataJson[i]["setpoint"]));
+            }
+            new Chart("myChart", {
+                type: "line",
+                data: {
+                    labels: timeData,
+                    datasets: [{
+                        borderColor: "black",
+                        borderWidth: 0,
+                        pointRadius: 0,
+                        data: setpointData
+                    }]
+                }
+            });
         });
-    }, 500);
+    }
+    //getVentilationData();
+
+    setInterval(update, 500);
 </script>
 

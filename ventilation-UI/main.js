@@ -8,6 +8,7 @@ const express = require('express');
 const basicAuth = require('express-basic-auth');
 
 const app = express();
+app.use(express.static(__dirname));
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true
@@ -88,7 +89,7 @@ app.get('/data/login', function (req, res) {
    });
 });
 
-app.get('/update', function (req, res) {
+app.get('/data/update', function (req, res) {
     db.all(`SELECT * FROM ventilation ORDER BY id DESC LIMIT 1`,function(err, result) {
         if (err) console.log(err);
         res.send(JSON.stringify(result[0]));
