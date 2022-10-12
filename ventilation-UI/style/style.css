@@ -30,6 +30,7 @@ body {
     color: #002a4c;
     padding-top: 40px;
     text-shadow: white 1px 1px 1px;
+    font-size: 23px;
 }
 .value {
 
@@ -73,13 +74,28 @@ input[type="range"]::-webkit-slider-thumb:active {
 }
 
 
-.button{
+.button {
     font-size: 2em;
     width: 3.4em;
     text-align: center;
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    border: 0;
+    color: #fff;
+    border: 2px solid transparent;
+    border-color: #000;
+    color: #000;
+    background: transparent;
+}
+.button:hover {
+    background-color: #000;
+    color: #fff;
 
 
 }
+
 
 .lower{
     background-color:#ecf0f1;
@@ -87,7 +103,7 @@ input[type="range"]::-webkit-slider-thumb:active {
     text-align: center;
 }
 .speed{
-    margin-left: 400px;
+    margin-left: 375px;
     width: 10%;
     float: left;
 }
