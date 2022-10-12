@@ -1,0 +1,119 @@
+@import url(https://fonts.googleapis.com/css?family=Dosis:700);
+
+.all{
+    background-color: lightgray;
+    text-align: center;
+
+}
+h1{
+    font-size: 40px;
+    font-weight: bold;
+}
+h4{
+    font-size: 30px;
+    font-weight: bold;
+}
+.upper{
+
+    background-color:#ecf0f1;
+}
+.logout{
+    float: right;
+    padding-right: 20%;
+
+}
+
+
+body {
+    font-family: "Dosis", Helvetica, Arial, sans-serif;
+    background: #ecf0f1;
+    color: #002a4c;
+    padding-top: 40px;
+    text-shadow: white 1px 1px 1px;
+}
+.value {
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+    width: 10em;
+    margin: auto;
+    letter-spacing: -.07em;
+    text-shadow: white 2px 2px 2px
+}
+
+
+input[type="range"] {
+    display: block;
+    -webkit-appearance: none;
+    background-color: #bdc3c7;
+    width: 30em;
+    height: 15px;
+
+    margin: 0 auto;
+    outline: 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #fd6600;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #000000;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+ input[type="range"]::-webkit-slider-thumb:hover {
+     background-color: #ffffff;
+     background-color: #ffffff;
+     border: 10px solid #e74c3c;
+ }
+input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1.8);
+}
+
+
+.button{
+    font-size: 2em;
+    width: 3.4em;
+    text-align: center;
+
+
+}
+
+.lower{
+    background-color:#ecf0f1;
+    width: 100%;
+    text-align: center;
+}
+.speed{
+
+    width: 15%;
+    float: left;
+    padding: 20px;
+
+}
+.pressure{
+    width: 15%;
+    float: left;
+    padding: 20px;
+
+}
+.co{
+    width: 15%;
+    float: left;
+    padding: 20px;
+
+}
+.rh{
+    width: 15%;
+    float: left;
+    padding: 20px;
+
+}
+.temp{
+    width: 15%;
+    float: left;
+    padding: 20px;
+
+}

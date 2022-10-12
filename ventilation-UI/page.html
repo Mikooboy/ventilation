@@ -3,44 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
+    <div class="all">
+        <h1>The control center!</h1>
+        <div class="upper">
+            <a class="logout" href="/logout">Logout</a> <br>
+            <h4>Select the the options for the Mode</h4>
+            <form class="form"action="javascript:submitform()">
+                <tr>
+                    <td><input id="manual" type="radio" name="mode" oninput="changeMode()" checked>Manual</td>
+                    <td> <input id="auto" type="radio" name="mode" oninput="changeMode()">Auto</td>
+                </tr>
+                <h4 id="targetHeader">Target speed</h4>
+                <input class="range" id="targetValue" type="range" min="0" max="100" oninput="document.getElementById('sliderOutput').value = this.value"><br>
+                <input class="value" id="sliderOutput" type="number" value="50" oninput="document.getElementById('targetValue').value = this.value">
+                <input class="button" type="submit">
+            </form>
+        </div>
 
-<a href="/logout">Logout</a>
+        <div class="lower">
+                <div class="speed">
+                    <h4>Speed</h4>
+                    <p id="Speed">0</p>
+                </div>
+                <div class="pressure">
+                    <h4>Pressure</h4>
+                    <p id="Pressure">0</p>
+                </div>
+                <div class ="co">
+                    <h4>CO2</h4>
+                    <p id="CO2">0</p>
+                </div>
+                <div class="rh">
+                    <h4>RH</h4>
+                    <p id="RH">0</p>
+                </div>
+                <div class ="temp">
+                    <h4>Temp</h4>
+                    <p id="Temp">0</p>
+                </div>
 
-<form action="javascript:submitform()">
-    <h4>Mode</h4>
-    <input id="manual" type="radio" name="mode" oninput="changeMode()" checked>
-    <label for="manual">Manual</label><br>
-    <input id="auto" type="radio" name="mode" oninput="changeMode()">
-    <label for="auto">Auto</label><br>
-    <h4 id="targetHeader">Target speed</h4>
-    <input id="targetValue" type="range" min="0" max="100" oninput="document.getElementById('sliderOutput').value = this.value"><br>
-    <input id="sliderOutput" type="number" value="50" oninput="document.getElementById('targetValue').value = this.value">
-    <input type="submit">
-</form>
+        </div>
 
-<div>
-    <h4>Speed</h4>
-    <p id="Speed">0</p>
-</div>
-<div>
-    <h4>Pressure</h4>
-    <p id="Pressure">0</p>
-</div>
-<div>
-    <h4>CO2</h4>
-    <p id="CO2">0</p>
-</div>
-<div>
-    <h4>RH</h4>
-    <p id="RH">0</p>
-</div>
-<div>
-    <h4>Temp</h4>
-    <p id="Temp">0</p>
-</div>
 
+    </div>
 </body>
 </html>
 
@@ -94,8 +102,3 @@
     }, 500);
 </script>
 
-<style>
-    input[type=range], input[type=number] {
-        width: 10em;
-    }
-</style>
