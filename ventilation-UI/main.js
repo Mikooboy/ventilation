@@ -28,11 +28,13 @@ const db = new sqlite3.Database('./ventilation.db', sqlite3.OPEN_READWRITE, (err
 const users = {
     'test': 'd31aceb3c06e3e7acc5acbf53f7a26a578873b547a1932b2c30358c0d1a710e9',     //test123
     'test2': 'd31aceb3c06e3e7acc5acbf53f7a26a578873b547a1932b2c30358c0d1a710e9',    //test123
-    'test3': 'd31aceb3c06e3e7acc5acbf53f7a26a578873b547a1932b2c30358c0d1a710e9'     //test123
+    'test3': 'd31aceb3c06e3e7acc5acbf53f7a26a578873b547a1932b2c30358c0d1a710e9',    //test123
+    'admin': 'd8da308ccd0cf4c331521fc8f8771507e65e9981de1959e0c76e035291024b1e'     //admin
 }
 let loggedIn = {}
 
 const crypto = require('crypto');
+//console.log(crypto.pbkdf2Sync("admin", 'salt', 100000, 32, 'sha512').toString('hex'));
 function encrypt(pass) {
     return crypto.pbkdf2Sync(pass, 'salt', 100000, 32, 'sha512').toString('hex');
 }
