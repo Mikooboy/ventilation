@@ -43,7 +43,7 @@ function encrypt(pass) {
 function validate(username, password) {
     if (users[username] === encrypt(password) && !loggedIn[username]) {
         db.run(`INSERT INTO login (username) VALUES (?)`, [username]);
-        console.log("logged in " + username);
+        console.log("logged in as" + username);
         loggedIn[username] = true;
     }
     return (users[username] === encrypt(password));
@@ -56,6 +56,7 @@ client.on('connect', function () {
 
 client.on('message', function (topic, message) {
     let parsed = JSON.parse(message.toString());
+    console.log(message.toString());
 
     if (topic === "controller/status") {
         db.run(`INSERT INTO ventilation (nr, speed, setpoint, pressure, auto, error, co2, rh, temp)
@@ -103,7 +104,7 @@ app.post('/send', (req, res) => {
 });
 
 app.get('/logout', function (req, res) {
-    console.log("logged out " + req.auth["user"]);
+    console.log("logged out as" + req.auth["user"]);
     delete loggedIn[req.auth["user"]];
     res.status(401).send("<h4>Logged out!</h4><a href='/'>Home</a>");
 });
