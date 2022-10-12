@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f8899a3f-b4d2-4b36-a5cf-e35f239676ca" name="Changes" comment="added ventilation.db">
-      <change afterPath="$PROJECT_DIR$/style/style.css" afterDir="false" />
+    <list default="true" id="f8899a3f-b4d2-4b36-a5cf-e35f239676ca" name="Changes" comment="added ventilation.db&#10;A style sheet page has been added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page.html" beforeDir="false" afterPath="$PROJECT_DIR$/page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +57,7 @@
       <workItem from="1664980007303" duration="113000" />
       <workItem from="1665050779786" duration="12000000" />
       <workItem from="1665396319663" duration="7548000" />
-      <workItem from="1665570248712" duration="9169000" />
+      <workItem from="1665570248712" duration="9637000" />
     </task>
     <task id="LOCAL−00001" summary="added database">
       <created>1665056976837</created>
@@ -78,7 +77,14 @@
       <option name="presentableId" value="LOCAL−00003" />
       <updated>1665406911960</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added ventilation.db&#10;A style sheet page has been added">
+      <created>1665579721719</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1665579721719</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,7 +106,8 @@
     <MESSAGE value="added database" />
     <MESSAGE value="added login" />
     <MESSAGE value="added ventilation.db" />
-    <option name="LAST_COMMIT_MESSAGE" value="added ventilation.db" />
+    <MESSAGE value="added ventilation.db&#10;A style sheet page has been added" />
+    <option name="LAST_COMMIT_MESSAGE" value="added ventilation.db&#10;A style sheet page has been added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
