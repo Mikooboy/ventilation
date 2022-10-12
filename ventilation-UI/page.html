@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="style/style.css">
 </head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <body>
     <div class="all">
         <h1>The control center!</h1>
@@ -44,11 +45,11 @@
                     <h4>Temp</h4>
                     <p id="Temp">0</p>
                 </div>
-
         </div>
-
-
     </div>
+
+    <canvas id="myChart" style="width:100%;max-width:1000px;margin:auto"></canvas>
+
 </body>
 </html>
 
@@ -121,8 +122,8 @@
             let timeData = [];
             let setpointData = [];
             for (let i = 0; i < dataJson.length; i++) {
-                timeData.push(dataJson[i]["id"]);
-                setpointData.push(parseInt(dataJson[i]["setpoint"]));
+                timeData.push(dataJson[i]["timestamp"]);
+                setpointData.push(parseInt(dataJson[i]["pressure"]));
             }
             new Chart("myChart", {
                 type: "line",
@@ -138,7 +139,7 @@
             });
         });
     }
-    //getVentilationData();
+    getVentilationData();
 
     setInterval(update, 500);
 </script>
