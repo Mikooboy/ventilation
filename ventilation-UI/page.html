@@ -5,7 +5,8 @@
     <title>Title</title>
     <link rel="stylesheet" href="style/style.css">
 </head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="external/Chart.js"></script>
+<script src="external/chartjs-plugin-labels.js"></script>
 <body>
     <div class="all">
         <h1>The control center!</h1>
@@ -49,7 +50,8 @@
         </div>
     </div>
 
-    <canvas id="myChart" style="width:100%;max-width:1000px;margin:auto"></canvas>
+    <canvas id="Chart1" style="width:100%;max-width:1000px;margin:auto"></canvas>
+    <canvas id="Chart2" style="width:100%;max-width:1000px;margin:auto"></canvas>
 </body>
 </html>
 
@@ -125,7 +127,7 @@
                 timeData.push(dataJson[i]["timestamp"]);
                 setpointData.push(parseInt(dataJson[i]["pressure"]));
             }
-            new Chart("myChart", {
+            new Chart("Chart1", {
                 type: "line",
                 data: {
                     labels: timeData,
@@ -139,7 +141,58 @@
             });
         });
     }
+
+    function getLoginData() {
+        fetch('/data/login', {
+            method: 'get'
+        }).then(async function (res) {
+            let dataJson = JSON.parse(await res.text());
+            let userData = {};
+            for (let i = 0; i < dataJson.length; i++) {
+                if (!userData[dataJson[i]["username"]]) {
+                    userData[dataJson[i]["username"]] = 0;
+                }
+                userData[dataJson[i]["username"]] += 1;
+            }
+            let xValues = Object.keys(userData);
+            let yValues = Object.values(userData);
+            let barColors = [
+                "#b91d47",
+                "#00aba9",
+                "#2b5797",
+                "#e8c3b9",
+                "#1e7145"
+            ];
+            new Chart("Chart2", {
+                type: "pie",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
+                },
+                options: {
+                    legend: {display: true},
+                    title: {
+                        display: true,
+                        text: "User logins"
+                    },
+                    plugins: {
+                        labels: {
+                            render: function(args) {
+                                return args.label + ": " + args.value;
+                            },
+                            fontColor: "white"
+                        },
+                    }
+                }
+            });
+        });
+    }
+
     getVentilationData();
+    getLoginData();
 
     setInterval(update, 500);
 </script>

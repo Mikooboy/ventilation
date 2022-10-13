@@ -43,7 +43,7 @@ function encrypt(pass) {
 function validate(username, password) {
     if (users[username] === encrypt(password) && !loggedIn[username]) {
         db.run(`INSERT INTO login (username) VALUES (?)`, [username]);
-        console.log("logged in as" + username);
+        console.log("logged in as " + username);
         loggedIn[username] = true;
     }
     return (users[username] === encrypt(password));
@@ -104,7 +104,7 @@ app.post('/send', (req, res) => {
 });
 
 app.get('/logout', function (req, res) {
-    console.log("logged out as" + req.auth["user"]);
+    console.log("logged out as " + req.auth["user"]);
     delete loggedIn[req.auth["user"]];
     res.status(401).send("<h4>Logged out!</h4><a href='/'>Home</a>");
 });
