@@ -161,6 +161,12 @@ input[type="range"]::-webkit-slider-thumb:active {
     color: #fff;
 }
 
+.ChartValueDiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+
 /*the second container which holds numbers and titles*/
 .lower{
     background-color:#ecf0f1;

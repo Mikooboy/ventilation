@@ -50,8 +50,18 @@
         </div>
     </div>
 
-    <canvas id="Chart1" style="width:100%;max-width:1000px;margin:auto"></canvas>
-    <canvas id="Chart2" style="width:100%;max-width:1000px;margin:auto"></canvas>
+    <div class="ChartValueDiv">
+        <select name="ChartValue" id="ChartValue" onchange="getVentilationData()">
+            <option value="speed">Speed</option>
+            <option value="pressure">Pressure</option>
+            <option value="co2">CO2</option>
+            <option value="rh">RH</option>
+            <option value="temp">Temp</option>
+        </select>
+    </div>
+
+    <canvas id="Chart1" style="width:100%;max-width:1000px;margin:auto;"></canvas>
+    <canvas id="Chart2" style="width:100%;max-width:1000px;margin:auto;padding-top:2em;"></canvas>
 </body>
 </html>
 
@@ -123,9 +133,10 @@
             let dataJson = JSON.parse(await res.text());
             let timeData = [];
             let setpointData = [];
+            let selection = document.getElementById("ChartValue").value;
             for (let i = 0; i < dataJson.length; i++) {
                 timeData.push(dataJson[i]["timestamp"]);
-                setpointData.push(parseInt(dataJson[i]["pressure"]));
+                setpointData.push(parseInt(dataJson[i][selection]));
             }
             new Chart("Chart1", {
                 type: "line",
@@ -137,6 +148,15 @@
                         pointRadius: 0,
                         data: setpointData
                     }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: "Data from past 24h"
+                    },
                 }
             });
         });
@@ -183,7 +203,8 @@
                             render: function(args) {
                                 return args.label + ": " + args.value;
                             },
-                            fontColor: "white"
+                            fontColor: "white",
+                            textShadow: true,
                         },
                     }
                 }

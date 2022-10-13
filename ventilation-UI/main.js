@@ -58,26 +58,30 @@ client.on('message', function (topic, message) {
     let parsed = JSON.parse(message.toString());
     console.log(message.toString());
 
+    let lastTimestamp;
     if (topic === "controller/status") {
-        db.run(`INSERT INTO ventilation (nr, speed, setpoint, pressure, auto, error, co2, rh, temp)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-            [
-                parsed["nr"],
-                parsed["speed"],
-                parsed["setpoint"],
-                parsed["pressure"],
-                parsed["auto"],
-                parsed["error"],
-                parsed["co2"],
-                parsed["rh"],
-                parsed["temp"]
-            ]
-        );
+        if (Date.now() < lastTimestamp + 1000) {
+            db.run(`INSERT INTO ventilation (nr, speed, setpoint, pressure, auto, error, co2, rh, temp)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                [
+                    parsed["nr"],
+                    parsed["speed"],
+                    parsed["setpoint"],
+                    parsed["pressure"],
+                    parsed["auto"],
+                    parsed["error"],
+                    parsed["co2"],
+                    parsed["rh"],
+                    parsed["temp"]
+                ]
+            );
+            lastTimestamp = Date.now();
+        }
     }
 });
 
 app.get('/data/ventilation', function (req, res) {
-   db.all(`SELECT * FROM ventilation`, function (err, result) {
+   db.all(`SELECT * FROM ventilation WHERE timestamp >= datetime('now','-24 hours')`, function (err, result) {
        if (err) console.log(err);
        res.send(JSON.stringify(result));
    });

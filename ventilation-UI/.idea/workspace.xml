@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f8899a3f-b4d2-4b36-a5cf-e35f239676ca" name="Changes" comment="Recent style">
-      <change afterPath="$PROJECT_DIR$/external/Chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/chartjs-plugin-labels.js" afterDir="false" />
+    <list default="true" id="f8899a3f-b4d2-4b36-a5cf-e35f239676ca" name="Changes" comment="added login chart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/page.html" beforeDir="false" afterPath="$PROJECT_DIR$/page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ventilation.db" beforeDir="false" afterPath="$PROJECT_DIR$/ventilation.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +137,13 @@
       <option name="project" value="LOCAL" />
       <updated>1665663189115</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL−00012" summary="added login chart">
+      <created>1665664473221</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1665664473221</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +168,8 @@
     <MESSAGE value="added ventilation.db&#10;A style sheet page has been added &#10;small changes for the style" />
     <MESSAGE value="added ventilation.db&#10;A style sheet page has been added &#10;small changes for the style&#10;css almost ready" />
     <MESSAGE value="Recent style" />
-    <option name="LAST_COMMIT_MESSAGE" value="Recent style" />
+    <MESSAGE value="added login chart" />
+    <option name="LAST_COMMIT_MESSAGE" value="added login chart" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
