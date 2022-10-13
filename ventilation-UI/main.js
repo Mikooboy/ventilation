@@ -2,7 +2,7 @@
 const path = require('path');
 
 const mqtt = require('mqtt');
-const client = mqtt.connect('mqtt://192.168.83.223:1883');
+const client = mqtt.connect('mqtt://192.168.1.254:1883');
 
 const express = require('express');
 const basicAuth = require('express-basic-auth');
@@ -58,25 +58,21 @@ client.on('message', function (topic, message) {
     let parsed = JSON.parse(message.toString());
     console.log(message.toString());
 
-    let lastTimestamp;
     if (topic === "controller/status") {
-        if (Date.now() < lastTimestamp + 1000) {
-            db.run(`INSERT INTO ventilation (nr, speed, setpoint, pressure, auto, error, co2, rh, temp)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-                [
-                    parsed["nr"],
-                    parsed["speed"],
-                    parsed["setpoint"],
-                    parsed["pressure"],
-                    parsed["auto"],
-                    parsed["error"],
-                    parsed["co2"],
-                    parsed["rh"],
-                    parsed["temp"]
-                ]
-            );
-            lastTimestamp = Date.now();
-        }
+        db.run(`INSERT INTO ventilation (nr, speed, setpoint, pressure, auto, error, co2, rh, temp)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            [
+                parsed["nr"],
+                parsed["speed"],
+                parsed["setpoint"],
+                parsed["pressure"],
+                parsed["auto"],
+                parsed["error"],
+                parsed["co2"],
+                parsed["rh"],
+                parsed["temp"]
+            ]
+        );
     }
 });
 
@@ -110,7 +106,7 @@ app.post('/send', (req, res) => {
 app.get('/logout', function (req, res) {
     console.log("logged out as " + req.auth["user"]);
     delete loggedIn[req.auth["user"]];
-    res.status(401).send("<h4>Logged out!</h4><a href='/'>Home</a>");
+    res.status(401).sendFile(path.join(__dirname, 'logout.html'));
 });
 
 app.get('/', (req, res) => {
