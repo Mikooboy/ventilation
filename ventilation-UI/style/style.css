@@ -1,32 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Dosis:700);
 
-.all{
-    background-color: lightgray;
-    text-align: center;
-
-}
-h1{
-    font-size: 40px;
-    font-weight: bold;
-}
-h4{
-    font-size: 30px;
-    font-weight: bold;
-}
-.upper{
-
-    background-color:#ecf0f1;
-    justify-content: center;
-}
-.logout{
-
-    padding-top: 1px;
-    padding-bottom: 1px;
-    text-align: center;
-
-}
-
-
 body {
     font-family: "Dosis", Helvetica, Arial, sans-serif;
     background: #ecf0f1;
@@ -35,8 +8,99 @@ body {
     text-shadow: white 1px 1px 1px;
     font-size: 23px;
 }
-.value {
+.all{
+    background-color: lightgray;
+    text-align: center;
+}
+/*h1 style for the title "control centre"*/
+h1{
+    font-size: 40px;
+    font-weight: bold;
+}
+/*logout style for logout*/
+.logout{
 
+    padding-top: 1px;
+    padding-bottom: 1px;
+    text-align: center;
+
+}
+
+/*h4 title style for all small titles*/
+h4{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/*the top container div which the mode and target speed containers'''' */
+.upper{
+
+    background-color:#ecf0f1;
+    justify-content: center;
+}
+
+/*radio button style*/
+.option-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position: relative;
+    top: 13.33333px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    transition: all 0.15s ease-out 0s;
+    background: #cbd1d8;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 0.5rem;
+    outline: none;
+    position: relative;
+    z-index: 1000;
+}
+.option-input:hover {
+    background: black;
+}
+.option-input:checked {
+    background: blue;
+}
+.option-input:checked::before {
+    width: 40px;
+    height: 40px;
+    display:flex;
+    content: '\f00c';
+    font-size: 25px;
+    font-weight:bold;
+    position: absolute;
+    align-items:center;
+    justify-content:center;
+    font-family:'Font Awesome 5 Free';
+}
+.option-input:checked::after {
+    -webkit-animation: click-wave 0.65s;
+    -moz-animation: click-wave 0.65s;
+    animation: click-wave 0.65s;
+    background: #40e0d0;
+    content: '';
+    display: block;
+    position: relative;
+    z-index: 100;
+}
+.option-input.radio {
+    border-radius: 50%;
+}
+.option-input.radio::after {
+    border-radius: 50%;
+}
+
+/*Input style for the text which displays the number*/
+.value {
     text-align: center;
     font-weight: bold;
     font-size: 2em;
@@ -46,7 +110,7 @@ body {
     text-shadow: white 2px 2px 2px
 }
 
-
+/*display input style */
 input[type="range"] {
     display: block;
     -webkit-appearance: none;
@@ -76,7 +140,7 @@ input[type="range"]::-webkit-slider-thumb:active {
     transform: scale(1.8);
 }
 
-
+/*Submit button style*/
 .button {
     font-size: 2em;
     width: 3.4em;
@@ -97,7 +161,7 @@ input[type="range"]::-webkit-slider-thumb:active {
     color: #fff;
 }
 
-
+/*the second container which holds numbers and titles*/
 .lower{
     background-color:#ecf0f1;
     display: flex;
@@ -124,3 +188,11 @@ margin-left: 1em;
     margin-right:  1em;
 
 }
+
+
+
+
+
+
+
+

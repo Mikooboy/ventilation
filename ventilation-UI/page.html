@@ -15,8 +15,8 @@
             <h4>Select the the options for the Mode</h4>
             <form class="form"action="javascript:submitform()">
                 <tr>
-                    <td><input id="manual" type="radio" name="mode" oninput="changeMode()" checked>Manual</td>
-                    <td> <input id="auto" type="radio" name="mode" oninput="changeMode()">Auto</td>
+                    <td><input class="option-input radio" id="manual" type="radio" name="mode" oninput="changeMode()" checked>Manual</td>
+                    <td> <input class="option-input radio" id="auto" type="radio" name="mode" oninput="changeMode()">Auto</td>
                 </tr>
                 <h4 id="targetHeader">Target speed</h4>
                 <input class="range" id="targetValue" type="range" min="0" max="100" oninput="document.getElementById('sliderOutput').value = this.value"><br>
@@ -50,6 +50,30 @@
     </div>
 
     <canvas id="myChart" style="width:100%;max-width:1000px;margin:auto"></canvas>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class='py'>
+                <label>
+                    <input type="radio" class="option-input radio" name="example" checked />
+                    Radio option
+                </label>
+            </div>
+
+
+
+
 
 </body>
 </html>
