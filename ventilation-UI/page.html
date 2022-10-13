@@ -126,7 +126,12 @@
         update();
     }
 
+     let ventilationChart;
     function getVentilationData() {
+        console.log("ventilation data");
+        if (ventilationChart) {
+            ventilationChart.destroy();
+        }
         fetch('/data/ventilation', {
             method: 'get'
         }).then(async function (res) {
@@ -138,7 +143,7 @@
                 timeData.push(dataJson[i]["timestamp"]);
                 setpointData.push(parseInt(dataJson[i][selection]));
             }
-            new Chart("Chart1", {
+            ventilationChart = new Chart("Chart1", {
                 type: "line",
                 data: {
                     labels: timeData,

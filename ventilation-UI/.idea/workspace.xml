@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f8899a3f-b4d2-4b36-a5cf-e35f239676ca" name="Changes" comment="Charts for all parameters">
-      <change afterPath="$PROJECT_DIR$/logout.html" afterDir="false" />
+    <list default="true" id="f8899a3f-b4d2-4b36-a5cf-e35f239676ca" name="Changes" comment="deleted a delay">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/page.html" beforeDir="false" afterPath="$PROJECT_DIR$/page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ventilation.db" beforeDir="false" afterPath="$PROJECT_DIR$/ventilation.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +144,13 @@
       <option name="presentableId" value="LOCAL−00013" />
       <updated>1665667485601</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL−00014" summary="deleted a delay">
+      <created>1665669978171</created>
+      <option name="number" value="LOCAL−00014" />
+      <option name="presentableId" value="LOCAL−00014" />
+      <updated>1665669978171</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,7 +177,8 @@
     <MESSAGE value="Recent style" />
     <MESSAGE value="added login chart" />
     <MESSAGE value="Charts for all parameters" />
-    <option name="LAST_COMMIT_MESSAGE" value="Charts for all parameters" />
+    <MESSAGE value="deleted a delay" />
+    <option name="LAST_COMMIT_MESSAGE" value="deleted a delay" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
