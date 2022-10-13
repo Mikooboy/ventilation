@@ -57,7 +57,8 @@
       <workItem from="1664980007303" duration="113000" />
       <workItem from="1665050779786" duration="12000000" />
       <workItem from="1665396319663" duration="7548000" />
-      <workItem from="1665570248712" duration="12318000" />
+      <workItem from="1665570248712" duration="13895000" />
+      <workItem from="1665656132736" duration="1715000" />
     </task>
     <task id="LOCAL−00001" summary="added database">
       <created>1665056976837</created>
@@ -105,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665582253654</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added ventilation.db&#10;A style sheet page has been added &#10;small changes for the style&#10;css almost ready">
+      <created>1665582713846</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1665582713846</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,7 +146,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/main.js</url>
           <line>12</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

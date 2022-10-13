@@ -16,6 +16,7 @@ h4{
 .upper{
 
     background-color:#ecf0f1;
+    justify-content: center;
 }
 .logout{
     float: right;
@@ -48,7 +49,7 @@ input[type="range"] {
     display: block;
     -webkit-appearance: none;
     background-color: #bdc3c7;
-    width: 30em;
+    width: 47em;
     height: 15px;
 
     margin: 0 auto;
@@ -92,44 +93,31 @@ input[type="range"]::-webkit-slider-thumb:active {
 .button:hover {
     background-color: #000;
     color: #fff;
-
-
 }
 
 
 .lower{
     background-color:#ecf0f1;
-    width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+
 }
 .speed{
-    margin-left: 370px;
-    width: 10%;
-    float: left;
+margin-left: 1em;
 }
 .pressure{
-    margin-left: 20px;
-    width: 10%;
-    float: left;
-
-
+    margin-left:  3em;
 }
 .co{
-    margin-left: 20px;
-    width: 10%;
-    float: left
+    margin-left:  3em;
 
 }
 .rh{
-    margin-left: 20px;
-    width: 10%;
-    float: left;
+    margin-left:  3em;
+
 
 }
 .temp{
-    margin-left: 20px;
-    width: 10%;
-    float: left;
-
+    margin-left:  3em;
 
 }
