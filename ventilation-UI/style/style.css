@@ -203,7 +203,13 @@ margin-left: 1em;
     justify-content: center;
 }
 
-
+.drop{
+    font-family: "Dosis", Helvetica, Arial, sans-serif;
+    background: #ecf0f1;
+    color: #002a4c;
+    text-shadow: white 1px 1px 1px;
+    font-size: 23px;
+}
 
 
 
